@@ -3,7 +3,6 @@ name: Something went wrong!
 about: Create a report to help me improve this script
 title: ''
 labels: bug
-assignees: ganiulis
 
 ---
 
