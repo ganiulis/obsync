@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+notify() {
+  notify-send -i $1 "Obsync" "$2"
+}
+
+obsync() {
+  rclone bisync ~/Documents/rclone remote:rclone --remove-empty-dirs &
+
+  while [[ -n $(jobs -r) ]]; do
+    notify $1 "$2"
+    sleep 4
+  done
+}
+
+obsync process-working "Preparing to launch Obsidian..."
+
+obsidian
+
+obsync drive-harddisk "Synchronizing with Google Drive..."
+
+notify face-wink "Synchronization successful."
